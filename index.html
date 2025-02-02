@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Management System</title>
+    <link id="styleSheet" rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container login">
+        <div class="heading">
+            <h1>Login</h1>
+        </div>
+        <div class="main">
+            <form id="formLogIn">
+                <div class="details">
+                    <div class="name">
+                        <input class="input" type="text" placeholder="Enter Your Name" id="inputName" autocomplete="off">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="accountNumber">
+                        <input class="input" type="number" placeholder="Enter Your Account Number" id="inputAccNumber" autocomplete="off">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div class="code">
+                        <input type="password" autocomplete="off" id="code" class="input" placeholder="Enter your Code">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                </div>
+                <div class="button-div">
+                    <button id="buttonLogin"type="submit">Log In<i class="fa-solid fa-right-to-bracket"></i></button>
+                    <p id="error">Please Enter Correct Validation</p>
+                </div>
+            </form>
+            <div class="footer">
+                <p>New User? <a href="#" id="clickSignUp">Sign Up</a> For new Account</p>
+            </div>
+        </div>
+    </div>
+    <div class="container signup">
+        <div class="heading">
+            <h1>SignUp</h1>
+            <h3>Let's set up your bank account!</h3>
+            <p>Your Money is safe with us don't worry</p>
+        </div>
+        <div class="main">
+            <form id="formSignIn">
+                <div class="details">
+                    <div class="Firstname">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" class="inputSignIn" id="fullName" placeholder="Enter Your Full Name" autocomplete="off">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <p class="fullNameMessage error"></p>
+                    <div class="email">
+                        <label for="email">Email: </label>
+                        <input type="email" class="inputSignIn" id="email" placeholder="Enter Your Email" autocomplete="off">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <p class="emailMessage error"></p>
+                    <div class="password">
+                        <label for="password">Password: </label>
+                        <input type="password" class="inputSignIn" id="password" placeholder="Enter Password">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <p class="passwordMessage error"></p>
+                    <div class="address">
+                        <label for="address">Address: </label>
+                        <input type="text" class="inputSignIn" id="address" autocomplete="off" placeholder="Enter Your Address">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <p class="addressMessage error"></p>
+                    <div class="accountNumberDiv">
+                        <label for="accountNumber">Account Number: </label>
+                        <input type="text" class="inputSignIn" id="accountNumber" placeholder="Enter Account Number" autocomplete="off">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <p class="accountNumberMessage error"></p>
+                    <p id="errorSignIn">Please Complete form</p>
+                </div>
+                <div class="button-div">
+                    <button type="submit" id="buttonCreate">Create<i class="fa-solid fa-file-invoice"></i></button>
+                </div>
+            </form>
+            <div class="footer">
+                <p>Already a User? <a href="#" id="clickLogIn">Log In</a> For exisiting Account</p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
