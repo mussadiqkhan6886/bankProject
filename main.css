@@ -29,6 +29,7 @@ header .first div{
     border: 1px solid transparent;
     padding: 0.4rem 0.6rem;
     cursor: pointer;
+    white-space: nowrap;
 }
 header .first div:hover{
     border: 1px solid white;
@@ -58,6 +59,7 @@ header .first div:hover{
 }
 #name{
     white-space: nowrap;
+    text-transform: capitalize;
 }
 
 #bank{
@@ -67,7 +69,7 @@ header .first div:hover{
 #bar{
     display: none;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 630px) {
     header{
         display: flex;
         flex-direction: column;
@@ -102,5 +104,8 @@ header .first div:hover{
     }
     .new-page-animation{
         left: 60%;
+    }
+    #name{
+        white-space: wrap;
     }
 }
