@@ -89,6 +89,7 @@ const newPage = () => {
 
     document.getElementById('bar').addEventListener('click', () => {
         document.querySelector('header').classList.toggle('header-animation');
+        document.querySelector('.new-page').classList.toggle('new-page-animation');
     })
 };
 

@@ -98,6 +98,9 @@ header .first div:hover{
         cursor: pointer;
     }
     .new-page{
+        transition: all 0.4s;
+    }
+    .new-page-animation{
         left: 60%;
     }
 }
