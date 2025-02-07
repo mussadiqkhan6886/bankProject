@@ -71,6 +71,7 @@ const newPage = () => {
                 <div><button id="logout">Log Out<i class="fa-solid fa-right-from-bracket"></i></button></div>
             </nav>
         </header>
+
         <div class="new-page">
             <h1 id='newPageHeading'>Hello, <span id='name'>${inputName.value}!</span></h1>
             <h2> Welcome to our Bank!</h2>
@@ -90,9 +91,10 @@ const newPage = () => {
     document.getElementById('bar').addEventListener('click', () => {
         document.querySelector('header').classList.toggle('header-animation');
         document.querySelector('.new-page').classList.toggle('new-page-animation');
-    })
+    });
+    
+    // adding functions to nav
 };
-
 
 
 
@@ -248,4 +250,3 @@ function loadData(){
     console.log(savedUsers);
 }
 loadData();
-
