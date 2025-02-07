@@ -58,8 +58,9 @@ buttonLogIn.addEventListener('click', login);
 const newPage = () => {
     selectItem('#styleSheet').href = `main.css`;
     selectItem('body').innerHTML = `
+    <i class="fa-solid fa-bars" id='bar'></i>
         <header>
-            <nav class='first'>
+            <nav class='first'> 
                 <div id='home' > Home </div>
                 <div> Deposit Money </div>
                 <div> Withdraw Money </div>
@@ -71,7 +72,7 @@ const newPage = () => {
             </nav>
         </header>
         <div class="new-page">
-            <h1 id='newPageHeading'>Hello, ${inputName.value}!</h1>
+            <h1 id='newPageHeading'>Hello, <span id='name'>${inputName.value}!</span></h1>
             <h2> Welcome to our Bank!</h2>
             <h2 id='bank'> Simple and Safe Banking </h2>
             <p>We will give you best service we can</p>
@@ -85,6 +86,10 @@ const newPage = () => {
     document.getElementById("logout").addEventListener("click", () => {
         window.location.reload(); // Reload to reset login state
     });
+
+    document.getElementById('bar').addEventListener('click', () => {
+        document.querySelector('header').classList.toggle('header-animation');
+    })
 };
 
 

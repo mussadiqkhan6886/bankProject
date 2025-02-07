@@ -131,3 +131,15 @@ button:hover{
     background-color: red;
 }
 
+@media only screen and (max-width: 400px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+    }
+    .signup{
+        display: none;
+    }
+    .heading{
+        border: none;
+    }
+}
