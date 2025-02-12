@@ -182,3 +182,8 @@ section h3 span::before{
         margin-bottom: 0;
     }
 }
+#deposit{
+    outline: none;
+    height: 30px;
+    padding-left: 0.3rem;
+}

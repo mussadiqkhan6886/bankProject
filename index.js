@@ -1,5 +1,4 @@
 import { database } from "./data.js";
-console.log(database)
 let savedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
 // Instead of reassigning `database`, update its contents
@@ -83,6 +82,7 @@ const newPage = () => {
         <script src="main.js"></script>
     `;
 
+    
     // Add event listener for logout after rendering the button
     document.getElementById("logout").addEventListener("click", () => {
         window.location.reload(); // Reload to reset login state
@@ -92,6 +92,19 @@ const newPage = () => {
         document.querySelector('header').classList.toggle('header-animation');
         document.querySelector('.new-page').classList.toggle('new-page-animation');
     });
+
+    document.getElementById('bar').addEventListener('click', () => {
+        let bar = document.getElementById('bar');
+    
+        if (bar.classList.contains('fa-close')) {
+            bar.classList.remove('fa-close');
+            bar.classList.add('fa-bars');
+        } else {
+            bar.classList.remove('fa-bars');
+            bar.classList.add('fa-close');
+        }
+    });
+    
     
     // adding functions to nav
 
@@ -101,7 +114,7 @@ const newPage = () => {
     const showAccountDetails = document.querySelector('#showAccount');
     const about = document.querySelector('#about');
     const main = document.querySelector('#main');
-    // const balance = document.querySelector('#balance');
+    const balance = document.querySelector('#deposit');
 
     home.addEventListener('click', () => {
         main.innerHTML = `
@@ -135,8 +148,42 @@ const newPage = () => {
             <br>
             We are committed to improving financial services with technology, making banking accessible and hassle-free.</p>
         `
-    })
+    });
 
+    deposit.addEventListener('click', () => {
+        main.innerHTML = `
+            <section id='deposit-section'>
+                <h1>Deposit Money</h1>
+                <p>Safe Banking</p>
+                <label>Enter Amount:
+                    <input type='number' min='100' id='depositAmount'>
+                </label>
+                <button id="confirmDeposit">Deposit</button>
+            </section>
+        `;
+    
+        document.getElementById('confirmDeposit').addEventListener('click', () => {
+            const depositAmount = Number(document.getElementById('depositAmount').value);
+            
+            if (!isNaN(depositAmount) && depositAmount > 0) {
+                let currentUser = database.find(user => user.accNumber === Number(accountNumber.value));
+    
+                if (currentUser) {
+                    currentUser.balance = (currentUser.balance || 0) + depositAmount; // Ensure balance exists
+                    localStorage.setItem("users", JSON.stringify(database)); // Save updated data
+                    
+                    alert(`Deposited ${depositAmount} successfully! New Balance: ${currentUser.balance}`);
+                    console.log("Updated User Data:", currentUser);
+                } else {
+                    alert("Account not found!");
+                }
+            } else {
+                alert("Invalid deposit amount.");
+            }
+            
+        });
+    });
+    
 };
 
 
