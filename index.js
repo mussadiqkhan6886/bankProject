@@ -62,17 +62,17 @@ const newPage = () => {
         <header>
             <nav class='first'> 
                 <div id='home' > Home </div>
-                <div> Deposit Money </div>
-                <div> Withdraw Money </div>
-                <div> Show Account </div>
-                <div> About Us </div>
+                <div id='deposit'> Deposit Money </div>
+                <div id='withdraw'> Withdraw Money </div>
+                <div id='showAccount'> Show Account </div>
+                <div id='about'> About Us </div>
             </nav>
             <nav>
                 <div><button id="logout">Log Out<i class="fa-solid fa-right-from-bracket"></i></button></div>
             </nav>
         </header>
 
-        <div class="new-page">
+        <div class="new-page" id='main'>
             <h1 id='newPageHeading'>Hello, <span id='name'>${inputName.value}!</span></h1>
             <h2> Welcome to our Bank!</h2>
             <h2 id='bank'> Simple and Safe Banking </h2>
@@ -94,6 +94,49 @@ const newPage = () => {
     });
     
     // adding functions to nav
+
+    const home = document.querySelector('#home');
+    const deposit = document.querySelector('#deposit');
+    const withdraw = document.querySelector('#withdraw');
+    const showAccountDetails = document.querySelector('#showAccount');
+    const about = document.querySelector('#about');
+    const main = document.querySelector('#main');
+    // const balance = document.querySelector('#balance');
+
+    home.addEventListener('click', () => {
+        main.innerHTML = `
+            <h1 id='newPageHeading'>Hello, <span id='name'>${inputName.value}!</span></h1>
+            <h2> Welcome to our Bank!</h2>
+            <h2 id='bank'> Simple and Safe Banking </h2>
+            <p>We will give you best service we can</p>
+        `
+    });
+
+    showAccountDetails.addEventListener('click', () => {
+        main.innerHTML = `
+            <section>
+                <h1>Account Details</h1>
+                <p>Keep your money safe and secure in our bank</p>
+                <h3><span>Name:</span> ${inputName.value}</h3>
+                <h3><span>Account Number:</span> ${accountNumber.value}</h3>
+                <h3><span>Amount Balance:</span> 0</h3>
+                <h3><span>Account Code: </span> ${code.value}</h3>
+            </section>
+        `
+    });
+
+    about.addEventListener('click', () => {
+        main.innerHTML = `
+            <h1 id='aboutUsHeading'>About Us</h1>
+            <i id='img' class="fa-solid fa-piggy-bank"></i>
+            <p>Welcome to our Bank Management System, a secure and efficient platform designed to streamline banking operations. Our system provides customers with a seamless banking experience, offering essential services such as account management, deposits, withdrawals, fund transfers, and transaction history tracking.
+            <br>
+            Our mission is to enhance banking efficiency by providing a user-friendly and secure platform for both customers and bank administrators. The system ensures data security, quick transactions, and an intuitive interface for smooth navigation.
+            <br>
+            We are committed to improving financial services with technology, making banking accessible and hassle-free.</p>
+        `
+    })
+
 };
 
 

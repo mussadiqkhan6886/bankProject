@@ -18,6 +18,9 @@ body{
 a{
     color: white;
 }
+a:hover{
+    color: darkblue;
+}
 .container{
     margin: 1rem;
     backdrop-filter: blur(6px);
@@ -142,4 +145,13 @@ button:hover{
     .heading{
         border: none;
     }
+}
+
+.fa-piggy-bank{
+    font-size: clamp(10vw, 7vw + 3vw, 6vw);
+}
+#piggy{
+    font-size: min(2rem);
+    font-weight: bold;
+    color: navy;
 }

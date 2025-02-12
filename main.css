@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 body{
-    min-width: 100dvw;
-    min-height: 100dvh;
+    min-height: 100vh;
+    min-width: 100vw;
     background: url(https://plus.unsplash.com/premium_photo-1681400651542-00885877ff2f?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmFuayUyMHNhZmV8ZW58MHx8MHx8fDA%3D);
     background-repeat: no-repeat;
     background-position: center;
@@ -26,13 +26,14 @@ header .first{
     justify-content: space-evenly;
 }
 header .first div{
-    border: 1px solid transparent;
+    border-bottom: 1px solid transparent;
     padding: 0.4rem 0.6rem;
     cursor: pointer;
     white-space: nowrap;
+    
 }
 header .first div:hover{
-    border: 1px solid white;
+    border-bottom: 1px solid white;
 }
 #logout{
     background-color: rgb(255, 255, 255);
@@ -69,15 +70,16 @@ header .first div:hover{
 #bar{
     display: none;
 }
-@media only screen and (max-width: 630px) {
+@media only screen and (max-width: 800px) {
     header{
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         width: 30%;
-        height: 100vh;
-        transform: translateX(-200px);
+        height: 100lvh;
+        transform: translateX(-250px);
         transition: all 0.4s;
+    
     }
     .header-animation{
         transform: translateX(0px);
@@ -88,6 +90,8 @@ header .first div:hover{
         height: 60%;
         background-color: black;
         margin-top: 10px;
+        width: 30%;
+        font-size: 3vw;
     }
     #bar{
         display: block;
@@ -101,11 +105,80 @@ header .first div:hover{
     }
     .new-page{
         transition: all 0.4s;
+        max-width: 50%;
+        margin-left: 1.5rem;
     }
     .new-page-animation{
         left: 60%;
     }
     #name{
         white-space: wrap;
+    }
+    #logout{
+        width: 80px;
+    }
+    
+}
+section{
+    background-color: rgba(220, 220, 220, 0.29);
+    backdrop-filter: blur(7px);
+    padding: 1rem;
+    box-shadow: inset -1px -1px 5px white,
+    inset 1px 1px 5px black;
+    max-width: 350px;
+}
+section h1{
+    margin: 1rem 0 0.5rem;
+}
+section p{
+    padding: 0.5rem 0 0.9rem;
+    border-bottom: 1px solid black;
+    margin-bottom: 0.5rem;
+}
+section h3{
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
+}
+section h3 span{
+    position: relative;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+section h3 span::before{
+    content: '';
+    background-color: rgba(0, 174, 255, 0.411);
+    width: 95%;
+    height: 3px;
+    position: absolute;
+    bottom: -7px;
+}
+#aboutUsHeading{
+    color: black;
+    font-size: 3rem;
+}
+#img{
+    font-size: 7rem;
+    margin: 1rem;
+}
+#main ol h4{
+    font-size: 2rem;
+    margin-top: 5px;
+}
+#main ol li{
+    list-style: none;
+    margin-top: 10px;
+}
+
+@media only screen and (max-height: 620px){
+    #main{
+        width: 90%;
+        padding-top: 1rem;
+    }
+    #aboutUsHeading{
+        margin-top: 2rem;
+        font-size: 2rem;
+        margin-bottom: 0;
     }
 }
