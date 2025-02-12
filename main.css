@@ -187,3 +187,21 @@ section h3 span::before{
     height: 30px;
     padding-left: 0.3rem;
 }
+@media only screen and (max-width: 450px) {
+    #newPageHeading{
+        font-size: 1.5rem;
+        margin-top: 0;
+    }
+    #bank{
+        font-size: 1rem;
+    }
+    #img{
+        font-size: 3rem;
+    }
+    #main p{
+        font-size: 0.7rem;
+    }
+    #logout{
+        width: 50px;
+    }
+}

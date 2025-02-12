@@ -183,6 +183,40 @@ const newPage = () => {
             
         });
     });
+
+    withdraw.addEventListener('click', () => {
+        main.innerHTML = `
+            <section id='withdraw-section'>
+                <h1>Withdraw Money</h1>
+                <p>Safe Banking</p>
+                <label>Enter Amount:
+                    <input type='number' min='100' id='withdrawAmount'>
+                </label>
+                <button id="confirmWithdraw">Withdraw</button>
+            </section>
+        `;
+    
+        document.getElementById('confirmWithdraw').addEventListener('click', () => {
+            const withdrawAmount = Number(document.getElementById('withdrawAmount').value);
+            
+            if (!isNaN(withdrawAmount) && withdrawAmount > 0) {
+                let currentUser = database.find(user => user.accNumber === Number(accountNumber.value));
+    
+                if (currentUser) {
+                    currentUser.balance = (currentUser.balance || 0) - withdrawAmount; // Ensure balance exists
+                    localStorage.setItem("users", JSON.stringify(database)); // Save updated data
+                    
+                    alert(`Withdraw ${withdrawAmount} successfully! New Balance: ${currentUser.balance}`);
+                    console.log("Updated User Data:", currentUser);
+                } else {
+                    alert("Account not found!");
+                }
+            } else {
+                alert("Invalid Withdraw amount.");
+            }
+            
+        });
+    });
     
 };
 
