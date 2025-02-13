@@ -88,14 +88,26 @@ const newPage = () => {
         window.location.reload(); // Reload to reset login state
     });
 
+    // document.getElementById('bar').addEventListener('click', () => {
+    //     document.querySelector('header').classList.toggle('header-animation');
+    //     document.querySelector('.new-page').classList.toggle('new-page-animation');
+    // });
+
+    // document.getElementById('bar').addEventListener('click', () => {
+    //     let bar = document.getElementById('bar');
+    
+    //     if (bar.classList.contains('fa-close')) {
+    //         bar.classList.remove('fa-close');
+    //         bar.classList.add('fa-bars');
+    //     } else {
+    //         bar.classList.remove('fa-bars');
+    //         bar.classList.add('fa-close');
+    //     }
+    // });
     document.getElementById('bar').addEventListener('click', () => {
         document.querySelector('header').classList.toggle('header-animation');
         document.querySelector('.new-page').classList.toggle('new-page-animation');
-    });
-
-    document.getElementById('bar').addEventListener('click', () => {
         let bar = document.getElementById('bar');
-    
         if (bar.classList.contains('fa-close')) {
             bar.classList.remove('fa-close');
             bar.classList.add('fa-bars');
@@ -185,15 +197,19 @@ const newPage = () => {
                         localStorage.setItem("users", JSON.stringify(database)); // Save updated data
                         
                         msg.innerHTML = `Deposited ${depositAmount} successfully! New Balance: ${currentUser.balance}`;
+                        msg.style.color = 'black';
                         console.log("Updated User Data:", currentUser);
                     } else {
                         msg.innerHTML = 'Account not found!';
+                        msg.style.color = 'red';
                     }
                 } else {
                     msg.innerHTML = 'Invalid deposit amount.';
+                    msg.style.color = 'red';
                 }
             }else{
                 msg.innerHTML = 'Invalid code';
+                msg.style.color = 'red';
             
             }
         });
@@ -227,7 +243,7 @@ const newPage = () => {
             if(isValidUser){
                 if (!isNaN(withdrawAmount) && withdrawAmount > 0 && withdrawAmount >= 100) {
                     let currentUser = database.find(user => user.accNumber === Number(accountNumber.value));
-                    if(withdrawAmount > currentUser.balance){
+                    if(withdrawAmount > (currentUser.balance || 0)){
                          msg.textContent = `Insufficient balance.`;
                          msg.style.color = 'red';
                     }else{
@@ -235,7 +251,7 @@ const newPage = () => {
                             currentUser.balance = (currentUser.balance || 0) - withdrawAmount; // Ensure balance exists
                             localStorage.setItem("users", JSON.stringify(database)); // Save updated data
                             msg.innerHTML = `Withdraw ${withdrawAmount} successfully! New Balance: ${currentUser.balance}`;
-                            msg.style.color = 'white';
+                            msg.style.color = 'black';
                             console.log("Updated User Data:", currentUser);
                         } else {
                             msg.textContent = `Account not found!.`

@@ -222,10 +222,16 @@ section h3 span::before{
    background: transparent;
    border: none;
    background-color: rgba(223, 223, 223, 0.219);
-   border-bottom: 2px solid black;
    margin-bottom: 10px;
    width: 100%;
    text-align: center;
+   transition: all 0.4s;
+}
+#deposit-section input:focus,
+#withdraw-section input:focus{
+    box-shadow: 1px 1px 10px black;
+    height: 35px;
+    width: 90%;
 }
 
 #deposit-section label,
@@ -248,6 +254,7 @@ section h3 span::before{
     font-weight: bold;
     letter-spacing: 4px;
     margin: 10px 0;
+    transition: all 0.4s;
 }
 #deposit-section button:hover,
 #withdraw-section button:hover{
