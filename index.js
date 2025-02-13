@@ -87,23 +87,7 @@ const newPage = () => {
     document.getElementById("logout").addEventListener("click", () => {
         window.location.reload(); // Reload to reset login state
     });
-
-    // document.getElementById('bar').addEventListener('click', () => {
-    //     document.querySelector('header').classList.toggle('header-animation');
-    //     document.querySelector('.new-page').classList.toggle('new-page-animation');
-    // });
-
-    // document.getElementById('bar').addEventListener('click', () => {
-    //     let bar = document.getElementById('bar');
     
-    //     if (bar.classList.contains('fa-close')) {
-    //         bar.classList.remove('fa-close');
-    //         bar.classList.add('fa-bars');
-    //     } else {
-    //         bar.classList.remove('fa-bars');
-    //         bar.classList.add('fa-close');
-    //     }
-    // });
     document.getElementById('bar').addEventListener('click', () => {
         document.querySelector('header').classList.toggle('header-animation');
         document.querySelector('.new-page').classList.toggle('new-page-animation');
