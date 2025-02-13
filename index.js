@@ -114,7 +114,6 @@ const newPage = () => {
     const showAccountDetails = document.querySelector('#showAccount');
     const about = document.querySelector('#about');
     const main = document.querySelector('#main');
-    const balance = document.querySelector('#deposit');
 
     home.addEventListener('click', () => {
         main.innerHTML = `
@@ -126,13 +125,15 @@ const newPage = () => {
     });
 
     showAccountDetails.addEventListener('click', () => {
+        let currentUser = database.find(user => user.accNumber === Number(accountNumber.value));
+        let balance = currentUser ? currentUser.balance || 0 : 0;
         main.innerHTML = `
             <section>
                 <h1>Account Details</h1>
                 <p>Keep your money safe and secure in our bank</p>
                 <h3><span>Name:</span> ${inputName.value}</h3>
                 <h3><span>Account Number:</span> ${accountNumber.value}</h3>
-                <h3><span>Amount Balance:</span> 0</h3>
+                <h3><span>Amount Balance:</span>${balance}</h3>
                 <h3><span>Account Code: </span> ${code.value}</h3>
             </section>
         `
@@ -350,13 +351,19 @@ address.addEventListener('keyup', validateAddress);
 function validateAccountNumber() {
     flagAccountNumber = false;
     const accountNumberMessage = selectItem('.accountNumberMessage');
-  
-    if (accountNumberSignIn.value.length < 6) {
-        displayInvalid('Please enter a valid Account Number', accountNumberSignIn, accountNumberMessage);
-    } else {
-        showCorrectMessage('Correct', accountNumberSignIn, accountNumberMessage);
-        flagAccountNumber = true;
-    }
+    
+    if (database.some(user => user.accNumber === Number(accountNumberSignIn.value))) {
+        alert("Account already exists with this number.");
+        return;
+    }else{
+        if (accountNumberSignIn.value.length < 6) {
+            displayInvalid('Please enter a valid Account Number', accountNumberSignIn, accountNumberMessage);
+        } else {
+            showCorrectMessage('Correct', accountNumberSignIn, accountNumberMessage);
+            flagAccountNumber = true;
+        }
+    }    
+    
 }
 accountNumberSignIn.addEventListener('keyup', validateAccountNumber);
 
