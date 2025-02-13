@@ -167,23 +167,30 @@ const newPage = () => {
     
         document.getElementById('confirmDeposit').addEventListener('click', () => {
             const depositAmount = Number(document.getElementById('depositAmount').value);
+            const depositCode = document.getElementById('depositAmountCode');
+            let users = JSON.parse(localStorage.getItem('users')) || database;
+            const isValidUser = users.some((data) =>
+                Number(depositCode.value) === data.code
+            );
+            if(isValidUser){
+                if (!isNaN(depositAmount) && depositAmount > 0 && depositAmount >= 100) {
+                    let currentUser = database.find(user => user.accNumber === Number(accountNumber.value));
             
-            if (!isNaN(depositAmount) && depositAmount > 0) {
-                let currentUser = database.find(user => user.accNumber === Number(accountNumber.value));
-    
-                if (currentUser) {
-                    currentUser.balance = (currentUser.balance || 0) + depositAmount; // Ensure balance exists
-                    localStorage.setItem("users", JSON.stringify(database)); // Save updated data
-                    
-                    alert(`Deposited ${depositAmount} successfully! New Balance: ${currentUser.balance}`);
-                    console.log("Updated User Data:", currentUser);
+                    if (currentUser) {
+                        currentUser.balance = (currentUser.balance || 0) + depositAmount; // Ensure balance exists
+                        localStorage.setItem("users", JSON.stringify(database)); // Save updated data
+                        
+                        alert(`Deposited ${depositAmount} successfully! New Balance: ${currentUser.balance}`);
+                        console.log("Updated User Data:", currentUser);
+                    } else {
+                        alert("Account not found!");
+                    }
                 } else {
-                    alert("Account not found!");
+                    alert("Invalid deposit amount.");
                 }
-            } else {
-                alert("Invalid deposit amount.");
+            }else{
+                alert("Invalid code");
             }
-            
         });
     });
 
@@ -204,21 +211,32 @@ const newPage = () => {
     
         document.getElementById('confirmWithdraw').addEventListener('click', () => {
             const withdrawAmount = Number(document.getElementById('withdrawAmount').value);
-            
-            if (!isNaN(withdrawAmount) && withdrawAmount > 0) {
-                let currentUser = database.find(user => user.accNumber === Number(accountNumber.value));
-    
-                if (currentUser) {
-                    currentUser.balance = (currentUser.balance || 0) - withdrawAmount; // Ensure balance exists
-                    localStorage.setItem("users", JSON.stringify(database)); // Save updated data
-                    
-                    alert(`Withdraw ${withdrawAmount} successfully! New Balance: ${currentUser.balance}`);
-                    console.log("Updated User Data:", currentUser);
+            const withdrawAmountCode = document.getElementById('withdrawAmountCode');
+            let users = JSON.parse(localStorage.getItem('users')) || database;
+            const isValidUser = users.some((data) =>
+                Number(withdrawAmountCode.value) === data.code
+            );
+            if(isValidUser){
+                if (!isNaN(withdrawAmount) && withdrawAmount > 0 && withdrawAmount >= 100) {
+                    let currentUser = database.find(user => user.accNumber === Number(accountNumber.value));
+                    if(withdrawAmount > currentUser.balance){
+                        alert("Insufficient balance");
+                    }else{
+                        if (currentUser) {
+                            currentUser.balance = (currentUser.balance || 0) - withdrawAmount; // Ensure balance exists
+                            localStorage.setItem("users", JSON.stringify(database)); // Save updated data
+                            
+                            alert(`Withdraw ${withdrawAmount} successfully! New Balance: ${currentUser.balance}`);
+                            console.log("Updated User Data:", currentUser);
+                        } else {
+                            alert("Account not found!");
+                        }
+                    }
                 } else {
-                    alert("Account not found!");
+                    alert("Invalid Withdraw amount.");
                 }
-            } else {
-                alert("Invalid Withdraw amount.");
+            }else{
+                alert("Invalid Code");
             }
             
         });
