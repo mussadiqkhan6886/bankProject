@@ -26,14 +26,13 @@ header .first{
     justify-content: space-evenly;
 }
 header .first div{
-    border-bottom: 1px solid transparent;
-    padding: 0.4rem 0.6rem;
+    border: 1px solid transparent;
+    padding: 0.4rem;
     cursor: pointer;
     white-space: nowrap;
-    
 }
 header .first div:hover{
-    border-bottom: 1px solid white;
+    border: 1px solid white;
 }
 #logout{
     background-color: rgb(255, 255, 255);
@@ -90,9 +89,8 @@ header .first div:hover{
         height: 60%;
         background-color: black;
         margin-top: 10px;
-        width: 30%;
+        width: 100%;
         font-size: 3vw;
-        
     }
     #bar{
         display: block;
