@@ -156,11 +156,13 @@ const newPage = () => {
             <section id='deposit-section'>
                 <h1>Deposit Money</h1>
                 <p>Safe Banking</p>
+                
                 <label>Enter Amount:</label>
                 <input type='number' min='100' id='depositAmount'>
                 <label>Enter Code:</label>
                 <input type='number' placeholder='Enter Code' id='depositAmountCode'>
                 <button id="confirmDeposit">Deposit</button>
+                
                 <div class='condition'><span>NOTE:</span> Deposit requires a code for security purposes.</div>
                 <div class='condition'><span>NOTE:</span> Deposit amount must be greater than 100.</div>
             </section>
@@ -202,11 +204,13 @@ const newPage = () => {
             <section id='withdraw-section'>
                 <h1>Withdraw Money</h1>
                 <p>Safe Banking</p>
+                
                 <label>Enter Amount:</label>
                 <input type='number' min='100' id='withdrawAmount'>
                 <label>Enter Code:</label>
                 <input type='number' placeholder='Enter Code' id='withdrawAmountCode'>
                 <button id="confirmWithdraw">Withdraw</button>
+               
                 <div class='condition'><span>NOTE:</span> Withdrawal requires a code for security purposes.</div>
                 <div class='condition'><span>NOTE:</span> Withdrawal amount must be greater than 100.</div>
             </section>

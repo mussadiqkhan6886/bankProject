@@ -20,6 +20,7 @@ header{
     background-color: rgb(0, 0, 0);
     align-items: center;
     color: white;
+    z-index: 1000;
 }
 header .first{
     display: flex;   
@@ -143,8 +144,7 @@ section h3{
 }
 section h3 span{
     position: relative;
-    margin-right: 10px;
-    white-space: nowrap;
+    margin-right: 10px;   
 }
 section h3 span::before{
     content: '';
@@ -157,6 +157,8 @@ section h3 span::before{
 #aboutUsHeading{
     color: black;
     font-size: 3rem;
+    background-color: white;
+    padding: 1rem;
 }
 #img{
     font-size: 7rem;
