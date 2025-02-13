@@ -102,7 +102,9 @@ button:hover{
     font-size: 1.1rem;
     margin: 0rem 0.1rem;
 }
-
+.fa-key{
+    cursor: pointer;
+}
 #error{
     color: red;
     display: none;

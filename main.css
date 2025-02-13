@@ -16,7 +16,7 @@ body{
 header{
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem;
+    padding:1rem  0.7rem;
     background-color: rgb(0, 0, 0);
     align-items: center;
     color: white;
@@ -25,6 +25,7 @@ header{
 header .first{
     display: flex;   
     justify-content: space-evenly;
+    width: 700px;
 }
 header .first div{
     border: 1px solid transparent;
@@ -129,6 +130,7 @@ section{
 }
 section h1{
     margin: 1rem 0 0.5rem;
+    color: black;
 }
 section p{
     padding: 0.5rem 0 0.9rem;
@@ -206,6 +208,12 @@ section h3 span::before{
     #logout{
         width: 50px;
     }
+    #deposit-section button,
+    #withdraw-section button{
+        scale: 0.7;
+        font-weight: 500;
+    }
+
 }
 
 #deposit-section,

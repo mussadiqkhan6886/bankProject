@@ -50,6 +50,17 @@ const login = () => {
     }
 };
 
+const showPassword = () => {
+    console.log(code);
+    if(code.type === 'password'){
+        code.type = 'text'
+    }else{
+        code.type = 'password';
+    }
+}
+
+selectItem('.fa-key').addEventListener('click', showPassword);
+
 // Add event listener for login button
 buttonLogIn.addEventListener('click', login);
 
@@ -87,7 +98,7 @@ const newPage = () => {
     document.getElementById("logout").addEventListener("click", () => {
         window.location.reload(); // Reload to reset login state
     });
-    
+
     document.getElementById('bar').addEventListener('click', () => {
         document.querySelector('header').classList.toggle('header-animation');
         document.querySelector('.new-page').classList.toggle('new-page-animation');
@@ -388,7 +399,7 @@ buttonSignIn.addEventListener('click', () => {
 
 function transferData(){
     if(flagFullName && flagEmail && flagConfirmPassword && flagAddress && flagAccountNumber){
-        console.log("confirm");
+        console.log("confirm"); //toast
         database.push({
             name: fullName.value,
             accNumber: Number(accountNumberSignIn.value),  // Convert to number
