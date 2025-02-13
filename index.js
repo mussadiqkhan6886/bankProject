@@ -167,6 +167,7 @@ const newPage = () => {
         `;
     
         document.getElementById('confirmDeposit').addEventListener('click', () => {
+            const msg = document.querySelector('#deposit-section h1')
             const depositAmount = Number(document.getElementById('depositAmount').value);
             const depositCode = document.getElementById('depositAmountCode');
             let users = JSON.parse(localStorage.getItem('users')) || database;
@@ -181,16 +182,17 @@ const newPage = () => {
                         currentUser.balance = (currentUser.balance || 0) + depositAmount; // Ensure balance exists
                         localStorage.setItem("users", JSON.stringify(database)); // Save updated data
                         
-                        alert(`Deposited ${depositAmount} successfully! New Balance: ${currentUser.balance}`);
+                        msg.innerHTML = `Deposited ${depositAmount} successfully! New Balance: ${currentUser.balance}`;
                         console.log("Updated User Data:", currentUser);
                     } else {
-                        alert("Account not found!");
+                        msg.innerHTML = 'Account not found!';
                     }
                 } else {
-                    alert("Invalid deposit amount.");
+                    msg.innerHTML = 'Invalid deposit amount.';
                 }
             }else{
-                alert("Invalid code");
+                msg.innerHTML = 'Invalid code';
+            
             }
         });
     });
@@ -211,6 +213,7 @@ const newPage = () => {
         `;
     
         document.getElementById('confirmWithdraw').addEventListener('click', () => {
+            const msg = document.querySelector('#withdraw-section h1')
             const withdrawAmount = Number(document.getElementById('withdrawAmount').value);
             const withdrawAmountCode = document.getElementById('withdrawAmountCode');
             let users = JSON.parse(localStorage.getItem('users')) || database;
@@ -221,23 +224,27 @@ const newPage = () => {
                 if (!isNaN(withdrawAmount) && withdrawAmount > 0 && withdrawAmount >= 100) {
                     let currentUser = database.find(user => user.accNumber === Number(accountNumber.value));
                     if(withdrawAmount > currentUser.balance){
-                        alert("Insufficient balance");
+                         msg.textContent = `Insufficient balance.`;
+                         msg.style.color = 'red';
                     }else{
                         if (currentUser) {
                             currentUser.balance = (currentUser.balance || 0) - withdrawAmount; // Ensure balance exists
                             localStorage.setItem("users", JSON.stringify(database)); // Save updated data
-                            
-                            alert(`Withdraw ${withdrawAmount} successfully! New Balance: ${currentUser.balance}`);
+                            msg.innerHTML = `Withdraw ${withdrawAmount} successfully! New Balance: ${currentUser.balance}`;
+                            msg.style.color = 'white';
                             console.log("Updated User Data:", currentUser);
                         } else {
-                            alert("Account not found!");
+                            msg.textContent = `Account not found!.`
+                            msg.style.color = 'red';
                         }
                     }
                 } else {
-                    alert("Invalid Withdraw amount.");
+                    msg.textContent = `Invalid Withdraw amount.`
+                    msg.style.color = 'red';
                 }
             }else{
-                alert("Invalid Code");
+                msg.textContent = `Invalid Code`
+                msg.style.color = 'red';
             }
             
         });
@@ -353,7 +360,7 @@ function validateAccountNumber() {
     const accountNumberMessage = selectItem('.accountNumberMessage');
     
     if (database.some(user => user.accNumber === Number(accountNumberSignIn.value))) {
-        alert("Account already exists with this number.");
+        displayInvalid('Account already exists with this number.', accountNumberSignIn, accountNumberMessage);
         return;
     }else{
         if (accountNumberSignIn.value.length < 6) {
@@ -381,7 +388,8 @@ function transferData(){
         database.push({
             name: fullName.value,
             accNumber: Number(accountNumberSignIn.value),  // Convert to number
-            code: Number(password.value)  // Convert to number
+            code: Number(password.value),  // Convert to number
+            balance: 0
         });
         console.log(database);
         signUpContainer.classList.add("hidden");
